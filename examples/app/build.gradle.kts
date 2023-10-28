@@ -2,7 +2,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    id("com.github.bomiyr.runtime-config")
+    id("io.github.bomiyr.runtime-config")
 }
 
 android {

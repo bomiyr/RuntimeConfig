@@ -9,6 +9,9 @@ import org.gradle.api.tasks.OutputFile
 import org.gradle.api.tasks.TaskAction
 import java.io.FileWriter
 
+/**
+ * Task for RuntimeConfig class generation.
+ */
 abstract class RuntimeConfigTask : DefaultTask() {
 
     @get:Input

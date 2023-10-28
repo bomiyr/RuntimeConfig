@@ -2,7 +2,7 @@
 plugins {
     alias(libs.plugins.android.dynamic.feature)
     alias(libs.plugins.kotlin.android)
-    id("com.github.bomiyr.runtime-config")
+    id("io.github.bomiyr.runtime-config")
 }
 android {
     namespace = "com.github.bomiyr.dynamicfeature"

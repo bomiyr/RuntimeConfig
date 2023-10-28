@@ -2,22 +2,36 @@
 plugins {
     alias(libs.plugins.kotlin.jvm)
     `java-gradle-plugin`
-    `maven-publish`
+    alias(libs.plugins.gradle.plugin.publish)
+    alias(libs.plugins.kotlin.dokka)
 }
 
-group = "com.github.bomiyr.runtimeconfig"
-version = "0.1"
-
+group = "io.github.bomiyr"
+version = "1.0"
 
 dependencies {
     implementation(libs.android.gradle.plugin)
 }
 
 gradlePlugin {
+    website.set("https://github.com/bomiyr/RuntimeConfig")
+    vcsUrl.set("https://github.com/bomiyr/RuntimeConfig.git")
+
     plugins {
         create("RuntimeConfigPlugin") {
-            id = "com.github.bomiyr.runtime-config"
+            id = "io.github.bomiyr.runtime-config"
             implementationClass = "com.github.bomiyr.runtimeconfig.RuntimeConfigPlugin"
+            displayName = "RuntimeConfig"
+            description =
+                "RuntimeConfig is a replacement for Android BuildConfig, but without abi-change after changing field values"
+            tags.set(listOf("android", "RuntimeConfig", "BuildConfig", "kotlin"))
         }
     }
 }
+
+tasks.named("javadoc").configure {
+    val dokkaTask = tasks.named("dokkaJavadoc")
+    this.dependsOn(dokkaTask)
+    this.outputs.dir(dokkaTask)
+}
+
